@@ -2,6 +2,53 @@
 
 _Document vivant: Toute réflexion, étude de marché, problèmes identifiés, itérations_
 
+## 🏢 SUB-AGENTS TEAM STRUCTURE
+
+**MentalClear a besoin d'une équipe distribuée avec rôles distincts:**
+
+### Team Roles (Daily Input)
+
+1. **Product Manager (PM)**
+   - Feature prioritization
+   - User pain points
+   - Roadmap strategy
+   - Conversion funnel analysis
+
+2. **Data & Analytics (DA)**
+   - Metrics validation (no BS)
+   - TAM/SAM/SOM calculations
+   - Competitor benchmarking
+   - User retention models
+
+3. **Design Lead (DL)**
+   - UI/UX improvements
+   - Brand positioning
+   - Mobile/accessibility
+   - Design system evolution
+
+4. **Marketing Lead (ML)**
+   - TikTok/X strategy
+   - Content trends validation
+   - User acquisition channels
+   - Pricing psychology
+
+5. **Tech Lead (TL)**
+   - Architecture decisions
+   - Feature feasibility
+   - Performance optimization
+   - Tech stack considerations
+
+### Daily Debate Process
+
+Each day (Job #1):
+1. Each sub-agent analyzes previous day's questions
+2. Each submits their perspective (contradictions welcomed)
+3. Team debates & converges on 3-5 actionable items
+4. Document dissent + final decision
+5. Pass to Job #2 for implementation
+
+---
+
 ## 🚨 DATA INTEGRITY RULES
 
 **JAMAIS INVENTER:**
