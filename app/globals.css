@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Outfit:wght@400;500;600;700;800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -13,36 +15,105 @@ html {
 }
 
 body {
-  font-family: 'Inter', system-ui, sans-serif;
-  background: linear-gradient(135deg, #f8f9ff 0%, #f0f4ff 100%);
-  color: #1f2937;
+  font-family: 'Outfit', system-ui, sans-serif;
+  background: linear-gradient(180deg, #fafbfc 0%, #f3f4f9 100%);
+  color: #0f172a;
+  overflow-x: hidden;
+}
+
+/* Display font for headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Outfit', system-ui, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+/* Premium wellness color palette - NOT generic purple */
+:root {
+  --primary: #0f766e;      /* Teal - calming, wellness */
+  --primary-light: #14b8a6; /* Lighter teal */
+  --accent: #d97706;        /* Warm amber - energy + warmth */
+  --accent-light: #fbbf24;  /* Lighter amber */
+  --neutral-dark: #0f172a;
+  --neutral-light: #e2e8f0;
 }
 
 .gradient-primary {
-  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  background: linear-gradient(135deg, #0f766e 0%, #14b8a6 100%);
+}
+
+.gradient-accent {
+  background: linear-gradient(135deg, #d97706 0%, #fbbf24 100%);
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, #6366f1 0%, #ec4899 100%);
+  background: linear-gradient(135deg, #0f766e 0%, #14b8a6 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .glass-effect {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(20, 184, 166, 0.1);
 }
 
+/* Elegant button with smooth interactions */
 .btn-primary {
-  @apply px-6 py-3 rounded-lg font-semibold text-white gradient-primary shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105;
+  @apply px-6 py-3 rounded-xl font-semibold text-white gradient-primary shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 font-medium;
 }
 
 .btn-secondary {
-  @apply px-6 py-3 rounded-lg font-semibold text-indigo-600 border-2 border-indigo-600 hover:bg-indigo-50 transition-all duration-300;
+  @apply px-6 py-3 rounded-xl font-semibold text-teal-700 border-2 border-teal-200 hover:bg-teal-50 hover:border-teal-400 transition-all duration-300;
 }
 
+/* Premium card with refined border */
 .card {
-  @apply p-6 rounded-2xl glass-effect hover:shadow-xl transition-all duration-300;
+  @apply p-6 rounded-2xl glass-effect border border-white/60 hover:shadow-lg transition-all duration-300 hover:border-teal-200/40;
+}
+
+/* Smooth fade-in animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* Micro-interaction: subtle glow on hover */
+@keyframes softGlow {
+  0%, 100% { box-shadow: 0 0 0 rgba(20, 184, 166, 0); }
+  50% { box-shadow: 0 0 20px rgba(20, 184, 166, 0.1); }
+}
+
+.hover:glow:hover {
+  animation: softGlow 2s ease-in-out infinite;
+}
+
+/* Premium text styles */
+.text-primary {
+  @apply text-teal-700;
+}
+
+.text-accent {
+  @apply text-amber-600;
+}
+
+/* Refined spacing helpers */
+.section-spacing {
+  @apply py-20 px-6;
+}
+
+/* Smooth hover scale for interactive elements */
+.hover-lift {
+  @apply transition-all duration-300 hover:scale-105 hover:-translate-y-1;
 }

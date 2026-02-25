@@ -27,7 +27,7 @@ export default function Home() {
             ✨ Votre bien-être mental mérite mieux
           </div>
           
-          <h1 className="text-6xl font-black mb-6 gradient-text leading-tight">
+          <h1 className="text-7xl font-black mb-6 gradient-text leading-tight tracking-tight">
             Combattez le burnout<br />avec l'IA
           </h1>
           
@@ -71,63 +71,63 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Feature 1 */}
-            <div className="card group">
-              <div className="mb-4 p-3 rounded-lg bg-indigo-100 w-fit group-hover:scale-110 transition-transform">
-                <Brain className="w-6 h-6 text-indigo-600" />
+            <div className="card group hover-lift">
+              <div className="mb-4 p-3 rounded-xl bg-teal-100 w-fit group-hover:bg-teal-200 transition-colors duration-300">
+                <Brain className="w-6 h-6 text-teal-700" />
               </div>
-              <h3 className="text-xl font-bold mb-3">Check-in IA Quotidien</h3>
+              <h3 className="text-xl font-bold mb-3 text-teal-900">Check-in IA Quotidien</h3>
               <p className="text-gray-600 mb-4">1 minute pour évaluer votre stress. L'IA comprend les patterns et adapte ses recommandations en temps réel.</p>
-              <div className="text-sm text-indigo-600 font-semibold">→ Insight émotionnel</div>
+              <div className="text-sm text-teal-700 font-semibold group-hover:translate-x-1 transition-transform">→ Insight émotionnel</div>
             </div>
 
             {/* Feature 2 */}
-            <div className="card group">
-              <div className="mb-4 p-3 rounded-lg bg-purple-100 w-fit group-hover:scale-110 transition-transform">
-                <Sparkles className="w-6 h-6 text-purple-600" />
+            <div className="card group hover-lift">
+              <div className="mb-4 p-3 rounded-xl bg-emerald-100 w-fit group-hover:bg-emerald-200 transition-colors duration-300">
+                <Sparkles className="w-6 h-6 text-emerald-700" />
               </div>
-              <h3 className="text-xl font-bold mb-3">Méditations Générées</h3>
+              <h3 className="text-xl font-bold mb-3 text-teal-900">Méditations Générées</h3>
               <p className="text-gray-600 mb-4">50+ méditations IA adaptées à vos besoins : stress managérial, sommeil, focus, parentalité.</p>
-              <div className="text-sm text-purple-600 font-semibold">→ Détente en 3-5 min</div>
+              <div className="text-sm text-emerald-700 font-semibold group-hover:translate-x-1 transition-transform">→ Détente en 3-5 min</div>
             </div>
 
             {/* Feature 3 */}
-            <div className="card group">
-              <div className="mb-4 p-3 rounded-lg bg-pink-100 w-fit group-hover:scale-110 transition-transform">
-                <TrendingUp className="w-6 h-6 text-pink-600" />
+            <div className="card group hover-lift">
+              <div className="mb-4 p-3 rounded-xl bg-amber-100 w-fit group-hover:bg-amber-200 transition-colors duration-300">
+                <TrendingUp className="w-6 h-6 text-amber-700" />
               </div>
-              <h3 className="text-xl font-bold mb-3">Tableau de Bord Santé</h3>
+              <h3 className="text-xl font-bold mb-3 text-teal-900">Tableau de Bord Santé</h3>
               <p className="text-gray-600 mb-4">Visualisez votre bien-être sur 30 jours. Patterns d'IA, prédictions de burnout, conseils personnalisés.</p>
-              <div className="text-sm text-pink-600 font-semibold">→ Suivi en continu</div>
+              <div className="text-sm text-amber-700 font-semibold group-hover:translate-x-1 transition-transform">→ Suivi en continu</div>
             </div>
 
             {/* Feature 4 */}
-            <div className="card group">
-              <div className="mb-4 p-3 rounded-lg bg-blue-100 w-fit group-hover:scale-110 transition-transform">
-                <Heart className="w-6 h-6 text-blue-600" />
+            <div className="card group hover-lift">
+              <div className="mb-4 p-3 rounded-xl bg-rose-100 w-fit group-hover:bg-rose-200 transition-colors duration-300">
+                <Heart className="w-6 h-6 text-rose-700" />
               </div>
-              <h3 className="text-xl font-bold mb-3">Wellness Score</h3>
+              <h3 className="text-xl font-bold mb-3 text-teal-900">Wellness Score</h3>
               <p className="text-gray-600 mb-4">Score quotidien 1-10 basé sur stress, sommeil, focus. Améliorez votre baseline semaine après semaine.</p>
-              <div className="text-sm text-blue-600 font-semibold">→ Progression mesurable</div>
+              <div className="text-sm text-rose-700 font-semibold group-hover:translate-x-1 transition-transform">→ Progression mesurable</div>
             </div>
 
             {/* Feature 5 */}
-            <div className="card group">
-              <div className="mb-4 p-3 rounded-lg bg-amber-100 w-fit group-hover:scale-110 transition-transform">
-                <Users className="w-6 h-6 text-amber-600" />
+            <div className="card group hover-lift">
+              <div className="mb-4 p-3 rounded-xl bg-orange-100 w-fit group-hover:bg-orange-200 transition-colors duration-300">
+                <Users className="w-6 h-6 text-orange-700" />
               </div>
-              <h3 className="text-xl font-bold mb-3">Experts Référencés</h3>
+              <h3 className="text-xl font-bold mb-3 text-teal-900">Experts Référencés</h3>
               <p className="text-gray-600 mb-4">Psychologues, coachs certifiés, thérapeutes. Connectez-vous directement depuis l'app (France 🇫🇷).</p>
-              <div className="text-sm text-amber-600 font-semibold">→ Support pro 24/7</div>
+              <div className="text-sm text-orange-700 font-semibold group-hover:translate-x-1 transition-transform">→ Support pro 24/7</div>
             </div>
 
             {/* Feature 6 */}
-            <div className="card group">
-              <div className="mb-4 p-3 rounded-lg bg-green-100 w-fit group-hover:scale-110 transition-transform">
-                <Shield className="w-6 h-6 text-green-600" />
+            <div className="card group hover-lift">
+              <div className="mb-4 p-3 rounded-xl bg-cyan-100 w-fit group-hover:bg-cyan-200 transition-colors duration-300">
+                <Shield className="w-6 h-6 text-cyan-700" />
               </div>
-              <h3 className="text-xl font-bold mb-3">RGPD & Sécurité</h3>
+              <h3 className="text-xl font-bold mb-3 text-teal-900">RGPD & Sécurité</h3>
               <p className="text-gray-600 mb-4">Vos données sont cryptées, confidentielles. Aucune revente. Conforme CNIL français.</p>
-              <div className="text-sm text-green-600 font-semibold">→ Votre privacy d'abord</div>
+              <div className="text-sm text-cyan-700 font-semibold group-hover:translate-x-1 transition-transform">→ Votre privacy d'abord</div>
             </div>
           </div>
         </div>
