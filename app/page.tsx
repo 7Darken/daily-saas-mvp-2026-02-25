@@ -15,6 +15,9 @@ export default function Home() {
           <div className="flex items-center gap-6">
             <a href="#features" className="text-sm font-medium text-neutral hover:text-primary transition">Features</a>
             <a href="#pricing" className="text-sm font-medium text-neutral hover:text-primary transition">Pricing</a>
+            <Link href="/thinking" className="text-sm font-medium text-teal-700 hover:text-teal-800 transition flex items-center gap-1">
+              💭 Our Thinking
+            </Link>
             <Link href="/app" className="btn-primary">Essayer</Link>
           </div>
         </div>
