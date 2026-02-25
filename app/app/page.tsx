@@ -5,6 +5,20 @@ import Link from 'next/link'
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar } from 'recharts'
 import { Brain, Home, Settings, LogOut, Send, AlertCircle, TrendingUp, MessageSquare, Calendar, Clock, CheckCircle } from 'lucide-react'
 
+// Types
+interface Meditation {
+  id: number
+  title: string
+  duration: string
+  category: string
+  completed: boolean
+}
+
+interface Insight {
+  type: 'warning' | 'success' | 'neutral'
+  text: string
+}
+
 // Mock data
 const wellnessData = [
   { date: '20 Feb', score: 6.2, stress: 7, sleep: 5, focus: 6 },
@@ -30,10 +44,10 @@ const insights = [
 ]
 
 export default function Dashboard() {
-  const [currentScreen, setCurrentScreen] = useState('home')
-  const [selectedMeditation, setSelectedMeditation] = useState(null)
-  const [checkinAnswer, setCheckinAnswer] = useState('')
-  const [showCheckinModal, setShowCheckinModal] = useState(false)
+  const [currentScreen, setCurrentScreen] = useState<string>('home')
+  const [selectedMeditation, setSelectedMeditation] = useState<Meditation | null>(null)
+  const [checkinAnswer, setCheckinAnswer] = useState<string>('')
+  const [showCheckinModal, setShowCheckinModal] = useState<boolean>(false)
 
   const TodayScore = () => (
     <div className="bg-gradient-to-br from-indigo-500 to-purple-600 text-white rounded-3xl p-8 mb-8 shadow-lg">
