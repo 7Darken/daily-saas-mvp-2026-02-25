@@ -237,34 +237,35 @@ export default function Home() {
             {/* Free Plan */}
             <div className="card">
               <h3 className="text-2xl font-bold mb-2">Gratuit</h3>
-              <p className="text-gray-600 mb-6">Idéal pour découvrir</p>
+              <p className="text-gray-600 mb-6">Commencez dès maintenant</p>
               <div className="text-4xl font-bold mb-6">0€<span className="text-lg text-gray-600">/mois</span></div>
               <ul className="space-y-3 mb-8">
-                <li className="flex items-center gap-2"><span className="text-indigo-600">✓</span> 1 check-in/jour</li>
-                <li className="flex items-center gap-2"><span className="text-indigo-600">✓</span> 1 méditation/semaine</li>
-                <li className="flex items-center gap-2"><span className="text-indigo-600">✓</span> Wellness Score basique</li>
-                <li className="flex items-center gap-2 text-gray-400"><span>✗</span> Support IA 24/7</li>
-                <li className="flex items-center gap-2 text-gray-400"><span>✗</span> Accès experts</li>
+                <li className="flex items-center gap-2"><span className="text-indigo-600">✓</span> Check-ins illimités</li>
+                <li className="flex items-center gap-2"><span className="text-indigo-600">✓</span> 5 méditations IA</li>
+                <li className="flex items-center gap-2"><span className="text-indigo-600">✓</span> Dashboard 7 jours</li>
+                <li className="flex items-center gap-2"><span className="text-indigo-600">✓</span> Wellness Score quotidien</li>
+                <li className="flex items-center gap-2 text-gray-400"><span>✗</span> Chat IA 24/7</li>
+                <li className="flex items-center gap-2 text-gray-400"><span>✗</span> Accès experts référencés</li>
               </ul>
-              <button className="btn-secondary w-full">Essayer</button>
+              <button className="btn-secondary w-full">Commencer gratuitement</button>
             </div>
 
             {/* Premium Plan */}
             <div className="card ring-2 ring-indigo-600 transform md:scale-105">
               <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-indigo-600 text-white px-4 py-1 rounded-full text-sm font-semibold">
-                ⭐ POPULAIRE
+                ⭐ RECOMMANDÉ
               </div>
               <h3 className="text-2xl font-bold mb-2">Premium</h3>
-              <p className="text-gray-600 mb-6">Pour votre santé mentale</p>
+              <p className="text-gray-600 mb-6">Pour une santé mentale complète</p>
               <div className="text-4xl font-bold mb-6">11,99€<span className="text-lg text-gray-600">/mois</span></div>
               <ul className="space-y-3 mb-8">
-                <li className="flex items-center gap-2"><span className="text-indigo-600">✓</span> Check-ins illimités</li>
+                <li className="flex items-center gap-2"><span className="text-indigo-600">✓</span> Tout du plan gratuit +</li>
                 <li className="flex items-center gap-2"><span className="text-indigo-600">✓</span> 50+ méditations IA</li>
-                <li className="flex items-center gap-2"><span className="text-indigo-600">✓</span> Dashboard complet 30j</li>
-                <li className="flex items-center gap-2"><span className="text-indigo-600">✓</span> Chat IA 24/7</li>
+                <li className="flex items-center gap-2"><span className="text-indigo-600">✓</span> Dashboard complet 30 jours</li>
+                <li className="flex items-center gap-2"><span className="text-indigo-600">✓</span> Chat IA personnalisé 24/7</li>
                 <li className="flex items-center gap-2"><span className="text-indigo-600">✓</span> Accès experts référencés</li>
               </ul>
-              <button className="btn-primary w-full">Débuter Premium</button>
+              <button className="btn-primary w-full">Essayer Premium</button>
             </div>
           </div>
         </div>
