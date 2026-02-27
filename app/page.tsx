@@ -31,19 +31,19 @@ export default function Home() {
           </div>
           
           <h1 className="text-7xl font-black mb-6 gradient-text leading-tight tracking-tight">
-            Combattez le burnout<br />avec l'IA
+            Le remote work<br />tue votre santé mentale
           </h1>
           
           <p className="text-2xl text-gray-600 mb-10 leading-relaxed max-w-3xl mx-auto">
-            Un assistant IA qui comprend votre stress, offre des méditations personnalisées, et vous connecte à des experts quand vous en avez besoin.
+            47% des télétravailleurs souffrent de burnout. MentalClear est votre habitude quotidienne: <span className="font-bold text-indigo-700">1 minute par jour pour construire votre streak.</span> Pas de motivation vide. Juste du support qui marche.
           </p>
 
           <div className="flex gap-4 justify-center mb-16">
             <Link href="/app" className="btn-primary">
-              Commencer gratuitement →
+              Commencer votre streak →
             </Link>
             <button className="btn-secondary">
-              Voir la démo
+              Comment ça marche?
             </button>
           </div>
 
@@ -69,18 +69,21 @@ export default function Home() {
       <section id="features" className="py-20 px-6 bg-white/50">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl font-bold text-center mb-16 gradient-text">
-            Vos outils contre le burnout
+            Build Your Daily Streak
           </h2>
+          <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+            1 minute par jour. 5 jours = visibilité sur vos patterns. 30 jours = transformation mesurable.
+          </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Feature 1 */}
-            <div className="card group hover-lift">
-              <div className="mb-4 p-3 rounded-xl bg-teal-100 w-fit group-hover:bg-teal-200 transition-colors duration-300">
-                <Brain className="w-6 h-6 text-teal-700" />
+            {/* Feature 1: Your Daily Habit */}
+            <div className="card group hover-lift ring-2 ring-indigo-600">
+              <div className="mb-4 p-3 rounded-xl bg-indigo-100 w-fit group-hover:bg-indigo-200 transition-colors duration-300">
+                <Zap className="w-6 h-6 text-indigo-700" />
               </div>
-              <h3 className="text-xl font-bold mb-3 text-teal-900">Check-in IA Quotidien</h3>
-              <p className="text-gray-600 mb-4">1 minute pour évaluer votre stress. L'IA comprend les patterns et adapte ses recommandations en temps réel.</p>
-              <div className="text-sm text-teal-700 font-semibold group-hover:translate-x-1 transition-transform">→ Insight émotionnel</div>
+              <h3 className="text-xl font-bold mb-3 text-indigo-900">Votre Streak Quotidienne ⭐</h3>
+              <p className="text-gray-600 mb-4"><span className="font-bold">60 secondes.</span> Votre stress aujourd'hui? Combien de sommeil? Combien de focus? L'IA reconnaît vos patterns invisibles.</p>
+              <div className="text-sm text-indigo-700 font-semibold group-hover:translate-x-1 transition-transform">→ 5 jours = patterns visibles</div>
             </div>
 
             {/* Feature 2 */}
@@ -237,35 +240,35 @@ export default function Home() {
             {/* Free Plan */}
             <div className="card">
               <h3 className="text-2xl font-bold mb-2">Gratuit</h3>
-              <p className="text-gray-600 mb-6">Commencez dès maintenant</p>
+              <p className="text-gray-600 mb-6"><span className="font-bold text-indigo-700">Build your streak</span> pendant 30 jours</p>
               <div className="text-4xl font-bold mb-6">0€<span className="text-lg text-gray-600">/mois</span></div>
               <ul className="space-y-3 mb-8">
-                <li className="flex items-center gap-2"><span className="text-indigo-600">✓</span> Check-ins illimités</li>
-                <li className="flex items-center gap-2"><span className="text-indigo-600">✓</span> 5 méditations IA</li>
-                <li className="flex items-center gap-2"><span className="text-indigo-600">✓</span> Dashboard 7 jours</li>
+                <li className="flex items-center gap-2"><span className="text-indigo-600">✓</span> <span className="font-semibold">Streak illimitée</span> (votre habitude)</li>
+                <li className="flex items-center gap-2"><span className="text-indigo-600">✓</span> 5 méditations IA personnalisées</li>
+                <li className="flex items-center gap-2"><span className="text-indigo-600">✓</span> Dashboard 7 jours (vos patterns)</li>
                 <li className="flex items-center gap-2"><span className="text-indigo-600">✓</span> Wellness Score quotidien</li>
-                <li className="flex items-center gap-2 text-gray-400"><span>✗</span> Chat IA 24/7</li>
-                <li className="flex items-center gap-2 text-gray-400"><span>✗</span> Accès experts référencés</li>
+                <li className="flex items-center gap-2 text-gray-400"><span>✗</span> Chat IA 24/7 (premium)</li>
+                <li className="flex items-center gap-2 text-gray-400"><span>✗</span> Experts référencés (premium)</li>
               </ul>
-              <button className="btn-secondary w-full">Commencer gratuitement</button>
+              <button className="btn-secondary w-full">Commencer votre streak</button>
             </div>
 
             {/* Premium Plan */}
             <div className="card ring-2 ring-indigo-600 transform md:scale-105">
               <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-indigo-600 text-white px-4 py-1 rounded-full text-sm font-semibold">
-                ⭐ RECOMMANDÉ
+                ⭐ +3.5x Impact
               </div>
               <h3 className="text-2xl font-bold mb-2">Premium</h3>
-              <p className="text-gray-600 mb-6">Pour une santé mentale complète</p>
+              <p className="text-gray-600 mb-6">Après 30 jours de streak gratuite</p>
               <div className="text-4xl font-bold mb-6">11,99€<span className="text-lg text-gray-600">/mois</span></div>
               <ul className="space-y-3 mb-8">
-                <li className="flex items-center gap-2"><span className="text-indigo-600">✓</span> Tout du plan gratuit +</li>
-                <li className="flex items-center gap-2"><span className="text-indigo-600">✓</span> 50+ méditations IA</li>
+                <li className="flex items-center gap-2"><span className="text-indigo-600">✓</span> Votre streak continue +</li>
+                <li className="flex items-center gap-2"><span className="text-indigo-600">✓</span> 50+ méditations IA (5x plus)</li>
                 <li className="flex items-center gap-2"><span className="text-indigo-600">✓</span> Dashboard complet 30 jours</li>
-                <li className="flex items-center gap-2"><span className="text-indigo-600">✓</span> Chat IA personnalisé 24/7</li>
-                <li className="flex items-center gap-2"><span className="text-indigo-600">✓</span> Accès experts référencés</li>
+                <li className="flex items-center gap-2"><span className="text-indigo-600">✓</span> <span className="font-semibold">Chat IA 24/7</span> (coaching personnalisé)</li>
+                <li className="flex items-center gap-2"><span className="text-indigo-600">✓</span> <span className="font-semibold">Experts référencés</span> (psychologues, thérapeutes)</li>
               </ul>
-              <button className="btn-primary w-full">Essayer Premium</button>
+              <button className="btn-primary w-full">Déverrouiller Premium</button>
             </div>
           </div>
         </div>
@@ -275,13 +278,13 @@ export default function Home() {
       <section className="py-20 px-6">
         <div className="max-w-3xl mx-auto text-center gradient-primary rounded-3xl p-12 text-white">
           <h2 className="text-3xl font-bold mb-4">
-            Prêt à reprendre le contrôle?
+            Commencez votre Streak aujourd'hui
           </h2>
           <p className="text-lg mb-8 opacity-90">
-            Des milliers de remote workers français font confiance à MentalClear. Rejoignez la communauté.
+            60 secondes. Gratuit. Aucun engagement. Juste une habitude quotidienne contre votre burnout.
           </p>
           <Link href="/app" className="inline-block px-8 py-4 bg-white text-indigo-600 font-bold rounded-lg hover:bg-gray-100 transition-all duration-300 transform hover:scale-105">
-            Commencer gratuitement (30s) →
+            Démarrer votre 1ère journée →
           </Link>
         </div>
       </section>

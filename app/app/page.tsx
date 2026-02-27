@@ -48,6 +48,8 @@ export default function Dashboard() {
   const [selectedMeditation, setSelectedMeditation] = useState<Meditation | null>(null)
   const [checkinAnswer, setCheckinAnswer] = useState<string>('')
   const [showCheckinModal, setShowCheckinModal] = useState<boolean>(false)
+  const [checkinTime, setCheckinTime] = useState<string>('')
+  const [showTimeSelection, setShowTimeSelection] = useState<boolean>(true)
 
   const TodayScore = () => (
     <div className="bg-gradient-to-br from-indigo-500 to-purple-600 text-white rounded-3xl p-8 mb-8 shadow-lg">
@@ -295,10 +297,61 @@ export default function Dashboard() {
   // Check-in Modal
   const CheckinModal = () => {
     if (!showCheckinModal) return null
+    
+    // Step 1: Choose check-in time (first time only)
+    if (showTimeSelection && !checkinTime) {
+      return (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50">
+          <div className="bg-white rounded-3xl p-8 max-w-md w-full">
+            <div className="mb-6">
+              <p className="text-sm text-gray-600 text-center mb-2">ÉTAPE 1/2</p>
+              <h3 className="text-2xl font-bold text-center">À quelle heure votre check-in?</h3>
+              <p className="text-sm text-gray-600 text-center mt-2">Nous vous rappellerons quotidiennement</p>
+            </div>
+            
+            <div className="space-y-2 mb-6">
+              {[
+                { time: '09:00', label: '9h - Matin (start day)' },
+                { time: '12:00', label: '12h - Midi (lunch break)' },
+                { time: '15:00', label: '15h - Après-midi (focus drop)' },
+                { time: '18:00', label: '18h - Fin de journée (décompression)' },
+                { time: '21:00', label: '21h - Soir (reflect)' },
+              ].map((opt) => (
+                <button
+                  key={opt.time}
+                  onClick={() => setCheckinTime(opt.time)}
+                  className={`w-full p-3 rounded-xl border-2 transition text-left font-medium ${
+                    checkinTime === opt.time
+                      ? 'border-indigo-600 bg-indigo-50 text-indigo-900'
+                      : 'border-gray-200 hover:border-indigo-300'
+                  }`}
+                >
+                  <Clock className="w-4 h-4 inline mr-2" />
+                  {opt.label}
+                </button>
+              ))}
+            </div>
+
+            <button
+              onClick={() => setShowTimeSelection(false)}
+              disabled={!checkinTime}
+              className={`btn-primary w-full ${!checkinTime ? 'opacity-50 cursor-not-allowed' : ''}`}
+            >
+              Continuer →
+            </button>
+          </div>
+        </div>
+      )
+    }
+
+    // Step 2: Check-in emotion
     return (
       <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50">
         <div className="bg-white rounded-3xl p-8 max-w-md w-full">
-          <h3 className="text-2xl font-bold mb-6 text-center">Comment allez-vous?</h3>
+          <div className="mb-6">
+            <p className="text-sm text-gray-600 text-center mb-2">ÉTAPE 2/2 · {checkinTime}</p>
+            <h3 className="text-2xl font-bold text-center">Comment allez-vous aujourd'hui?</h3>
+          </div>
           
           <div className="space-y-3 mb-6">
             {[
@@ -327,10 +380,20 @@ export default function Dashboard() {
             onClick={() => {
               setShowCheckinModal(false)
               setCheckinAnswer('')
+              setShowTimeSelection(true)
+              setCheckinTime('')
             }}
-            className="btn-primary w-full"
+            disabled={!checkinAnswer}
+            className={`btn-primary w-full ${!checkinAnswer ? 'opacity-50 cursor-not-allowed' : ''}`}
           >
             Envoyer Check-in
+          </button>
+          
+          <button
+            onClick={() => setShowTimeSelection(true)}
+            className="w-full mt-2 text-sm text-gray-600 hover:text-indigo-600 transition"
+          >
+            ← Retour
           </button>
         </div>
       </div>
