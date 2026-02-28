@@ -52,7 +52,7 @@ export default function Dashboard() {
   const [showTimeSelection, setShowTimeSelection] = useState<boolean>(true)
 
   const TodayScore = () => (
-    <div className="bg-gradient-to-br from-indigo-500 to-purple-600 text-white rounded-3xl p-8 mb-8 shadow-lg">
+    <div className="bg-gradient-to-br from-indigo-600 to-purple-700 text-white rounded-3xl p-8 mb-8 shadow-lg">
       <div className="flex justify-between items-start mb-4">
         <div>
           <p className="text-indigo-100 text-sm">Votre Wellness Score</p>
@@ -298,46 +298,60 @@ export default function Dashboard() {
   const CheckinModal = () => {
     if (!showCheckinModal) return null
     
-    // Step 1: Choose check-in time (first time only)
+    // Step 1: Choose check-in time (first time only) - SMART DEFAULT VERSION
     if (showTimeSelection && !checkinTime) {
       return (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50">
           <div className="bg-white rounded-3xl p-8 max-w-md w-full">
             <div className="mb-6">
-              <p className="text-sm text-gray-600 text-center mb-2">ÉTAPE 1/2</p>
+              <p className="text-xs text-gray-600 text-center mb-2 font-semibold">ÉTAPE 1/5</p>
               <h3 className="text-2xl font-bold text-center">À quelle heure votre check-in?</h3>
               <p className="text-sm text-gray-600 text-center mt-2">Nous vous rappellerons quotidiennement</p>
             </div>
             
             <div className="space-y-2 mb-6">
               {[
-                { time: '09:00', label: '9h - Matin (start day)' },
-                { time: '12:00', label: '12h - Midi (lunch break)' },
-                { time: '15:00', label: '15h - Après-midi (focus drop)' },
-                { time: '18:00', label: '18h - Fin de journée (décompression)' },
-                { time: '21:00', label: '21h - Soir (reflect)' },
+                { time: '09:00', emoji: '🌅', label: '9h - Matin', recommended: true },
+                { time: '12:00', emoji: '🍽️', label: '12h - Midi', recommended: false },
+                { time: '18:00', emoji: '🌙', label: '18h - Fin de journée', recommended: false },
               ].map((opt) => (
-                <button
-                  key={opt.time}
-                  onClick={() => setCheckinTime(opt.time)}
-                  className={`w-full p-3 rounded-xl border-2 transition text-left font-medium ${
-                    checkinTime === opt.time
-                      ? 'border-indigo-600 bg-indigo-50 text-indigo-900'
-                      : 'border-gray-200 hover:border-indigo-300'
-                  }`}
-                >
-                  <Clock className="w-4 h-4 inline mr-2" />
-                  {opt.label}
-                </button>
+                <div key={opt.time} className="relative">
+                  {opt.recommended && (
+                    <div className="absolute -top-2 right-4 bg-indigo-600 text-white text-xs px-2.5 py-0.5 rounded-full font-semibold z-10">
+                      ⭐ Recommandé
+                    </div>
+                  )}
+                  <button
+                    key={opt.time}
+                    onClick={() => setCheckinTime(opt.time)}
+                    className={`w-full p-4 rounded-xl border-2 transition text-left font-medium text-base ${
+                      checkinTime === opt.time
+                        ? 'border-indigo-600 bg-indigo-50 text-indigo-900'
+                        : opt.recommended ? 'border-indigo-300 bg-indigo-50 hover:border-indigo-600' : 'border-gray-200 hover:border-indigo-300'
+                    }`}
+                  >
+                    <span className="text-2xl mr-3">{opt.emoji}</span>
+                    {opt.label}
+                  </button>
+                </div>
               ))}
             </div>
 
             <button
-              onClick={() => setShowTimeSelection(false)}
-              disabled={!checkinTime}
-              className={`btn-primary w-full ${!checkinTime ? 'opacity-50 cursor-not-allowed' : ''}`}
+              onClick={() => {
+                setCheckinTime('09:00')
+                setShowTimeSelection(false)
+              }}
+              className="btn-primary w-full mb-2"
             >
               Continuer →
+            </button>
+            
+            <button
+              onClick={() => setShowTimeSelection(false)}
+              className="w-full text-sm text-gray-600 hover:text-gray-900 transition py-2"
+            >
+              Je vais changer après
             </button>
           </div>
         </div>
@@ -349,7 +363,7 @@ export default function Dashboard() {
       <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50">
         <div className="bg-white rounded-3xl p-8 max-w-md w-full">
           <div className="mb-6">
-            <p className="text-sm text-gray-600 text-center mb-2">ÉTAPE 2/2 · {checkinTime}</p>
+            <p className="text-xs text-gray-600 text-center mb-2 font-semibold">ÉTAPE 2/5 · {checkinTime}</p>
             <h3 className="text-2xl font-bold text-center">Comment allez-vous aujourd'hui?</h3>
           </div>
           
@@ -370,8 +384,8 @@ export default function Dashboard() {
                     : 'border-gray-200 hover:border-indigo-300'
                 }`}
               >
-                <span className="text-3xl mr-3">{option.emoji}</span>
-                <span className="font-semibold">{option.label}</span>
+                <span className="text-4xl mr-3">{option.emoji}</span>
+                <span className="font-semibold text-base">{option.label}</span>
               </button>
             ))}
           </div>

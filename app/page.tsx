@@ -40,7 +40,7 @@ export default function Home() {
 
           <div className="flex gap-4 justify-center mb-16">
             <Link href="/app" className="btn-primary">
-              Commencer votre streak →
+              Commencer ma série →
             </Link>
             <button className="btn-secondary">
               Comment ça marche?
