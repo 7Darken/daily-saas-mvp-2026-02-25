@@ -50,6 +50,8 @@ export default function Dashboard() {
   const [showCheckinModal, setShowCheckinModal] = useState<boolean>(false)
   const [checkinTime, setCheckinTime] = useState<string>('')
   const [showTimeSelection, setShowTimeSelection] = useState<boolean>(true)
+  const [workSchedule, setWorkSchedule] = useState<string>('')
+  const [showScheduleSelection, setShowScheduleSelection] = useState<boolean>(true)
 
   const TodayScore = () => (
     <div className="bg-gradient-to-br from-indigo-600 to-purple-700 text-white rounded-3xl p-8 mb-8 shadow-lg">
@@ -138,17 +140,29 @@ export default function Dashboard() {
         <h3 className="font-bold text-lg mb-4">🤖 Insights IA</h3>
         <div className="space-y-3">
           {insights.map((insight, i) => (
-            <div key={i} className={`p-3 rounded-lg flex gap-3 ${
+            <div key={i} className={`p-4 rounded-lg flex gap-3 ${
               insight.type === 'warning' ? 'bg-yellow-50 border-l-4 border-yellow-400' : 
               insight.type === 'success' ? 'bg-green-50 border-l-4 border-green-400' :
               'bg-blue-50 border-l-4 border-blue-400'
-            }`}>
-              <span className="text-lg">
+            }`} role="status" aria-label={`${insight.type} insight`}>
+              <span className="text-xl" aria-hidden="true">
                 {insight.type === 'warning' ? '⚠️' : insight.type === 'success' ? '✨' : 'ℹ️'}
               </span>
-              <p className="text-sm text-gray-700">{insight.text}</p>
+              <p className="text-base text-gray-700">{insight.text}</p>
             </div>
           ))}
+          {workSchedule && (
+            <div className="p-4 rounded-lg flex gap-3 bg-purple-50 border-l-4 border-purple-400">
+              <span className="text-xl" aria-hidden="true">💡</span>
+              <p className="text-base text-gray-700">
+                {workSchedule === 'erratic' ? 
+                  'Votre horaire est irrégulier. Essayez 3 check-ins/semaine au lieu de quotidien.' :
+                  workSchedule === 'flexible' ?
+                  'Check-in flexible. Vous pouvez adapter votre heure quotidienne si besoin.' :
+                  'Horaire fixe confirmé. Rappels à 9h chaque matin.' }
+              </p>
+            </div>
+          )}
         </div>
       </div>
     </div>
@@ -298,15 +312,66 @@ export default function Dashboard() {
   const CheckinModal = () => {
     if (!showCheckinModal) return null
     
+    // Step 0: Work schedule selection (first time only)
+    if (showScheduleSelection && !workSchedule) {
+      return (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50">
+          <div className="bg-white rounded-3xl p-8 max-w-md w-full">
+            <div className="mb-6">
+              <p className="text-xs text-gray-600 text-center mb-2 font-semibold">ÉTAPE 1/6</p>
+              <h3 className="text-2xl font-bold text-center">Quel est votre horaire de travail?</h3>
+              <p className="text-sm text-gray-600 text-center mt-2 text-base">Cela nous aide à personnaliser vos rappels</p>
+            </div>
+            
+            <div className="space-y-2 mb-6">
+              {[
+                { type: 'fixed', emoji: '🕘', label: 'Fixe (9h-17h)', desc: 'Horaires réguliers' },
+                { type: 'flexible', emoji: '🎯', label: 'Flexible', desc: 'Variable mais prévisible' },
+                { type: 'erratic', emoji: '🔄', label: 'Irrégulier', desc: 'Très variable' },
+              ].map((opt) => (
+                <button
+                  key={opt.type}
+                  onClick={() => {
+                    setWorkSchedule(opt.type)
+                    setShowScheduleSelection(false)
+                  }}
+                  className={`w-full p-4 rounded-xl border-2 transition text-left ${
+                    workSchedule === opt.type
+                      ? 'border-indigo-600 bg-indigo-50'
+                      : 'border-gray-200 hover:border-indigo-300'
+                  }`}
+                >
+                  <div className="flex items-center gap-3">
+                    <span className="text-2xl">{opt.emoji}</span>
+                    <div>
+                      <p className="font-semibold text-base">{opt.label}</p>
+                      <p className="text-xs text-gray-600">{opt.desc}</p>
+                    </div>
+                  </div>
+                </button>
+              ))}
+            </div>
+
+            <button
+              onClick={() => setShowScheduleSelection(false)}
+              className="btn-primary w-full"
+            >
+              Continuer →
+            </button>
+          </div>
+        </div>
+      )
+    }
+    
     // Step 1: Choose check-in time (first time only) - SMART DEFAULT VERSION
     if (showTimeSelection && !checkinTime) {
       return (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50">
           <div className="bg-white rounded-3xl p-8 max-w-md w-full">
             <div className="mb-6">
-              <p className="text-xs text-gray-600 text-center mb-2 font-semibold">ÉTAPE 1/5</p>
+              <p className="text-sm text-gray-600 text-center mb-2 font-semibold">ÉTAPE 2/6</p>
               <h3 className="text-2xl font-bold text-center">À quelle heure votre check-in?</h3>
-              <p className="text-sm text-gray-600 text-center mt-2">Nous vous rappellerons quotidiennement</p>
+              <p className="text-base text-gray-600 text-center mt-2">Nous vous rappellerons quotidiennement</p>
             </div>
             
             <div className="space-y-2 mb-6">
@@ -324,14 +389,15 @@ export default function Dashboard() {
                   <button
                     key={opt.time}
                     onClick={() => setCheckinTime(opt.time)}
-                    className={`w-full p-4 rounded-xl border-2 transition text-left font-medium text-base ${
+                    className={`w-full p-4 rounded-xl border-2 transition text-left font-medium ${
                       checkinTime === opt.time
                         ? 'border-indigo-600 bg-indigo-50 text-indigo-900'
                         : opt.recommended ? 'border-indigo-300 bg-indigo-50 hover:border-indigo-600' : 'border-gray-200 hover:border-indigo-300'
                     }`}
+                    aria-label={`Sélectionner ${opt.label}`}
                   >
-                    <span className="text-2xl mr-3">{opt.emoji}</span>
-                    {opt.label}
+                    <span className="text-2xl mr-3" aria-hidden="true">{opt.emoji}</span>
+                    <span className="text-base">{opt.label}</span>
                   </button>
                 </div>
               ))}
@@ -358,12 +424,12 @@ export default function Dashboard() {
       )
     }
 
-    // Step 2: Check-in emotion
+    // Step 3: Check-in emotion
     return (
       <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50">
         <div className="bg-white rounded-3xl p-8 max-w-md w-full">
           <div className="mb-6">
-            <p className="text-xs text-gray-600 text-center mb-2 font-semibold">ÉTAPE 2/5 · {checkinTime}</p>
+            <p className="text-sm text-gray-600 text-center mb-2 font-semibold">ÉTAPE 3/6 · {checkinTime}</p>
             <h3 className="text-2xl font-bold text-center">Comment allez-vous aujourd'hui?</h3>
           </div>
           
@@ -383,8 +449,10 @@ export default function Dashboard() {
                     ? 'border-indigo-600 bg-indigo-50'
                     : 'border-gray-200 hover:border-indigo-300'
                 }`}
+                aria-label={`Je me sens ${option.label}`}
+                aria-pressed={checkinAnswer === option.value.toString()}
               >
-                <span className="text-4xl mr-3">{option.emoji}</span>
+                <span className="text-4xl mr-3" aria-hidden="true">{option.emoji}</span>
                 <span className="font-semibold text-base">{option.label}</span>
               </button>
             ))}
@@ -395,7 +463,9 @@ export default function Dashboard() {
               setShowCheckinModal(false)
               setCheckinAnswer('')
               setShowTimeSelection(true)
+              setShowScheduleSelection(true)
               setCheckinTime('')
+              setWorkSchedule('')
             }}
             disabled={!checkinAnswer}
             className={`btn-primary w-full ${!checkinAnswer ? 'opacity-50 cursor-not-allowed' : ''}`}
