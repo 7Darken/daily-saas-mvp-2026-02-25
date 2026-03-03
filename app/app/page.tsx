@@ -52,30 +52,32 @@ export default function Dashboard() {
   const [showTimeSelection, setShowTimeSelection] = useState<boolean>(true)
   const [workSchedule, setWorkSchedule] = useState<string>('')
   const [showScheduleSelection, setShowScheduleSelection] = useState<boolean>(true)
+  const [showCelebration, setShowCelebration] = useState<boolean>(false)
+  const [stressLevel, setStressLevel] = useState<number>(4)
 
   const TodayScore = () => (
-    <div className="bg-gradient-to-br from-indigo-600 to-purple-700 text-white rounded-3xl p-8 mb-8 shadow-lg">
+    <div className="bg-gradient-to-br from-indigo-700 to-purple-800 text-white rounded-3xl p-8 mb-8 shadow-lg">
       <div className="flex justify-between items-start mb-4">
         <div>
-          <p className="text-indigo-100 text-sm">Votre Wellness Score</p>
-          <div className="text-6xl font-black">7.6</div>
-          <p className="text-indigo-100 text-sm mt-2">↑ +0.2 depuis hier</p>
+          <p className="text-indigo-100 text-base font-medium">Votre Wellness Score</p>
+          <div className="text-7xl font-black">7.6</div>
+          <p className="text-indigo-100 text-base mt-2 font-semibold">↑ +0.2 depuis hier</p>
         </div>
-        <TrendingUp className="w-12 h-12 text-indigo-200" />
+        <TrendingUp className="w-14 h-14 text-indigo-200" />
       </div>
       <div className="bg-white/20 backdrop-blur rounded-2xl p-4">
         <div className="grid grid-cols-3 gap-4">
           <div>
-            <p className="text-xs text-indigo-100">Stress</p>
-            <p className="text-2xl font-bold">4/10</p>
+            <p className="text-sm text-indigo-100 font-medium">Stress</p>
+            <p className="text-3xl font-bold">4/10</p>
           </div>
           <div>
-            <p className="text-xs text-indigo-100">Sommeil</p>
-            <p className="text-2xl font-bold">7.5/10</p>
+            <p className="text-sm text-indigo-100 font-medium">Sommeil</p>
+            <p className="text-3xl font-bold">7.5/10</p>
           </div>
           <div>
-            <p className="text-xs text-indigo-100">Focus</p>
-            <p className="text-2xl font-bold">8/10</p>
+            <p className="text-sm text-indigo-100 font-medium">Focus</p>
+            <p className="text-3xl font-bold">8/10</p>
           </div>
         </div>
       </div>
@@ -83,39 +85,88 @@ export default function Dashboard() {
   )
 
   const Navigation = () => (
-    <nav className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-6 py-3 flex justify-around">
-      <button onClick={() => setCurrentScreen('home')} className={`flex flex-col items-center gap-1 py-2 px-4 rounded-lg transition ${currentScreen === 'home' ? 'text-indigo-600 bg-indigo-50' : 'text-gray-600'}`}>
-        <Home className="w-5 h-5" />
-        <span className="text-xs font-semibold">Accueil</span>
+    <>
+      <nav className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-4 py-2 flex justify-around">
+        <button onClick={() => setCurrentScreen('home')} className={`flex flex-col items-center gap-1 py-2 px-3 rounded-lg transition ${currentScreen === 'home' ? 'text-indigo-600 bg-indigo-50' : 'text-gray-600'}`} aria-label="Accueil" aria-current={currentScreen === 'home'}>
+          <Home className="w-5 h-5" />
+          <span className="text-xs font-semibold">Accueil</span>
+        </button>
+        <button onClick={() => setCurrentScreen('meditations')} className={`flex flex-col items-center gap-1 py-2 px-3 rounded-lg transition ${currentScreen === 'meditations' ? 'text-indigo-600 bg-indigo-50' : 'text-gray-600'}`} aria-label="Méditations" aria-current={currentScreen === 'meditations'}>
+          <Brain className="w-5 h-5" />
+          <span className="text-xs font-semibold">Méditations</span>
+        </button>
+        <button onClick={() => setCurrentScreen('chat')} className={`flex flex-col items-center gap-1 py-2 px-3 rounded-lg transition ${currentScreen === 'chat' ? 'text-indigo-600 bg-indigo-50' : 'text-gray-600'}`} aria-label="Chat IA" aria-current={currentScreen === 'chat'}>
+          <MessageSquare className="w-5 h-5" />
+          <span className="text-xs font-semibold">Chat IA</span>
+        </button>
+        <button onClick={() => setCurrentScreen('settings')} className={`flex flex-col items-center gap-1 py-2 px-3 rounded-lg transition ${currentScreen === 'settings' ? 'text-indigo-600 bg-indigo-50' : 'text-gray-600'}`} aria-label="Paramètres" aria-current={currentScreen === 'settings'}>
+          <Settings className="w-5 h-5" />
+          <span className="text-xs font-semibold">Paramètres</span>
+        </button>
+      </nav>
+      
+      {/* Mobile FAB - Check-in Button */}
+      <button
+        onClick={() => setShowCheckinModal(true)}
+        className="fixed bottom-24 right-6 bg-gradient-to-br from-indigo-600 to-purple-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all hover:scale-110 active:scale-95"
+        aria-label="Check-in rapide"
+        title="Check-in quotidien"
+      >
+        <Calendar className="w-6 h-6" />
       </button>
-      <button onClick={() => setCurrentScreen('meditations')} className={`flex flex-col items-center gap-1 py-2 px-4 rounded-lg transition ${currentScreen === 'meditations' ? 'text-indigo-600 bg-indigo-50' : 'text-gray-600'}`}>
-        <Brain className="w-5 h-5" />
-        <span className="text-xs font-semibold">Méditations</span>
-      </button>
-      <button onClick={() => setCurrentScreen('chat')} className={`flex flex-col items-center gap-1 py-2 px-4 rounded-lg transition ${currentScreen === 'chat' ? 'text-indigo-600 bg-indigo-50' : 'text-gray-600'}`}>
-        <MessageSquare className="w-5 h-5" />
-        <span className="text-xs font-semibold">Chat IA</span>
-      </button>
-      <button onClick={() => setCurrentScreen('settings')} className={`flex flex-col items-center gap-1 py-2 px-4 rounded-lg transition ${currentScreen === 'settings' ? 'text-indigo-600 bg-indigo-50' : 'text-gray-600'}`}>
-        <Settings className="w-5 h-5" />
-        <span className="text-xs font-semibold">Paramètres</span>
-      </button>
-    </nav>
+    </>
   )
 
   const HomeScreen = () => (
     <div>
       <TodayScore />
 
-      {/* Check-in CTA */}
-      <div className="card mb-6 cursor-pointer hover:shadow-lg transition-all" onClick={() => setShowCheckinModal(true)}>
-        <div className="flex items-center justify-between">
+      {/* Check-in CTA with Stress Level */}
+      <div className="card mb-6">
+        <div className="flex items-center justify-between mb-4">
           <div>
             <p className="font-bold text-lg mb-1">Check-in Quotidien</p>
             <p className="text-sm text-gray-600">Comment allez-vous aujourd'hui?</p>
           </div>
           <Calendar className="w-6 h-6 text-indigo-600" />
         </div>
+        
+        {/* Stress Slider with Real-time Color Feedback */}
+        <div className="mt-4 p-4 bg-gray-50 rounded-xl">
+          <div className="flex items-center justify-between mb-2">
+            <p className="text-sm font-semibold text-gray-700">Niveau de Stress</p>
+            <span className={`text-sm font-bold px-3 py-1 rounded-full ${
+              stressLevel <= 3 ? 'bg-green-100 text-green-700' :
+              stressLevel <= 6 ? 'bg-yellow-100 text-yellow-700' :
+              'bg-red-100 text-red-700'
+            }`}>
+              {stressLevel}/10
+            </span>
+          </div>
+          <input
+            type="range"
+            min="0"
+            max="10"
+            value={stressLevel}
+            onChange={(e) => setStressLevel(Number(e.target.value))}
+            className="w-full h-2 rounded-lg appearance-none cursor-pointer"
+            style={{
+              background: stressLevel <= 3 ? '#10b981' : stressLevel <= 6 ? '#f59e0b' : '#ef4444'
+            }}
+          />
+          <div className="flex justify-between text-xs text-gray-500 mt-2">
+            <span>Calme</span>
+            <span>Modéré</span>
+            <span>Très Stressé</span>
+          </div>
+        </div>
+        
+        <button 
+          onClick={() => setShowCheckinModal(true)}
+          className="btn-primary w-full mt-4"
+        >
+          Démarrer Check-in →
+        </button>
       </div>
 
       {/* Chart */}
@@ -141,14 +192,18 @@ export default function Dashboard() {
         <div className="space-y-3">
           {insights.map((insight, i) => (
             <div key={i} className={`p-4 rounded-lg flex gap-3 ${
-              insight.type === 'warning' ? 'bg-yellow-50 border-l-4 border-yellow-400' : 
-              insight.type === 'success' ? 'bg-green-50 border-l-4 border-green-400' :
-              'bg-blue-50 border-l-4 border-blue-400'
+              insight.type === 'warning' ? 'bg-amber-50 border-l-4 border-amber-600' : 
+              insight.type === 'success' ? 'bg-emerald-50 border-l-4 border-emerald-600' :
+              'bg-blue-50 border-l-4 border-blue-600'
             }`} role="status" aria-label={`${insight.type} insight`}>
               <span className="text-xl" aria-hidden="true">
                 {insight.type === 'warning' ? '⚠️' : insight.type === 'success' ? '✨' : 'ℹ️'}
               </span>
-              <p className="text-base text-gray-700">{insight.text}</p>
+              <p className={`text-base font-medium ${
+                insight.type === 'warning' ? 'text-amber-900' :
+                insight.type === 'success' ? 'text-emerald-900' :
+                'text-blue-900'
+              }`}>{insight.text}</p>
             </div>
           ))}
           {workSchedule && (
@@ -196,23 +251,55 @@ export default function Dashboard() {
 
       {selectedMeditation && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-3xl p-8 max-w-md w-full">
-            <div className="text-center mb-6">
-              <div className="text-6xl mb-4">🧘</div>
-              <h3 className="text-2xl font-bold mb-2">{selectedMeditation.title}</h3>
-              <p className="text-gray-600">{selectedMeditation.duration}</p>
-            </div>
-            <div className="bg-gradient-to-br from-indigo-500 to-purple-600 text-white rounded-2xl p-4 text-center mb-6">
-              <p className="text-sm opacity-90">Méditation en cours de lecture...</p>
-              <div className="mt-3 w-full bg-white/30 rounded-full h-2">
-                <div className="bg-white h-2 rounded-full w-1/3 animate-pulse"></div>
+          {!showCelebration ? (
+            <div className="bg-white rounded-3xl p-8 max-w-md w-full">
+              <div className="text-center mb-6">
+                <div className="text-6xl mb-4">🧘</div>
+                <h3 className="text-2xl font-bold mb-2">{selectedMeditation.title}</h3>
+                <p className="text-gray-600">{selectedMeditation.duration}</p>
               </div>
-              <p className="text-xs mt-2">2:15 / 5:00</p>
+              <div className="bg-gradient-to-br from-indigo-500 to-purple-600 text-white rounded-2xl p-4 text-center mb-6">
+                <p className="text-sm opacity-90">Méditation en cours de lecture...</p>
+                <div className="mt-3 w-full bg-white/30 rounded-full h-2">
+                  <div className="bg-white h-2 rounded-full w-1/3 animate-pulse"></div>
+                </div>
+                <p className="text-xs mt-2">2:15 / 5:00</p>
+              </div>
+              <button 
+                className="btn-primary w-full" 
+                onClick={() => setShowCelebration(true)}
+              >
+                Méditation Terminée ✨
+              </button>
             </div>
-            <button className="btn-primary w-full" onClick={() => setSelectedMeditation(null)}>
-              Fermer
-            </button>
-          </div>
+          ) : (
+            <div className="bg-white rounded-3xl p-8 max-w-md w-full text-center">
+              <div className="text-7xl mb-4 animate-bounce">🎉</div>
+              <h3 className="text-3xl font-black text-indigo-600 mb-2">Bravo!</h3>
+              <p className="text-lg text-gray-700 mb-2">{selectedMeditation.title}</p>
+              <p className="text-sm text-gray-600 mb-4">Méditation complétée</p>
+              
+              <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl p-6 mb-6">
+                <p className="text-sm text-gray-600 mb-2">Votre streak</p>
+                <p className="text-5xl font-black text-green-600">🔥 3</p>
+                <p className="text-xs text-gray-600 mt-2">jours consécutifs</p>
+              </div>
+              
+              <p className="text-sm text-gray-700 mb-6">
+                💪 Vous progressez! Continuez demain pour atteindre 7 jours.
+              </p>
+              
+              <button 
+                className="btn-primary w-full"
+                onClick={() => {
+                  setSelectedMeditation(null)
+                  setShowCelebration(false)
+                }}
+              >
+                Retour au Tableau de Bord
+              </button>
+            </div>
+          )}
         </div>
       )}
     </div>
