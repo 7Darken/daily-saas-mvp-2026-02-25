@@ -1005,3 +1005,249 @@ Expected lift: Signup→Check-in completion 40% → 70%+
 
 _Timestamp: 26 Feb 09:29-09:35 UTC | Job: MVP Implementation (Job #2) | Status: ✅ COMPLETE_
 
+---
+
+## 📅 JOUR 8 (3 Mars 2026 - 06:40 UTC) - FINAL TEAM DEBATE & LAUNCH ALIGNMENT
+
+**Context:** 4 days before Mar 7 launch. All 5 roles (PM, DA, DL, ML, TL) conducted independent analysis of MentalClear readiness + launch preparedness.
+
+---
+
+### 🎯 PM (PRODUCT MANAGER) PERSPECTIVE - JOUR 8
+
+**Key Findings:** Day-2 retention is bottleneck (users hit dashboard overload). Onboarding flow must close this gap. Feature prioritization: (1) Guided onboarding text + mobile redesign, (2) Streak tracking, (3) Share results (deferred).
+
+**Recommendation:** Ship Mar 7 with text-based onboarding. Focus on PMF proof (real data > perfection). Confidence: 8/10
+
+**Friction map identified:** Landing→Signup (low), Signup→First Check-in (high), Check-in→Meditation (medium), Meditation Completion→Celebration (critical), Day 1-7 habit formation (medium retention driver).
+
+---
+
+### 📊 DA (DATA & ANALYTICS) PERSPECTIVE - JOUR 8
+
+**Key Findings:** TAM verified (117K conservative, 176K optimistic). Critical KPIs locked: Onboarding 60%, Meditation 70%, Day-7 retention 45%, Session 10+ min, Check-in 50%. Week 1 forecast: 400-850 signups (conservative organic).
+
+**Recommendation:** Launch Mar 7 with confidence 8/10. All measurement systems ready. Go/no-go criteria defined. Confidence: 7.5/10
+
+**Unknowns to measure:** Conversion landing→signup (assume 5%, measure), meditation completion rate (assume 70%, industry avg 50-60%), creator partnership effectiveness (response rate 40-60%).
+
+---
+
+### 🎨 DL (DESIGN LEAD) PERSPECTIVE - JOUR 8
+
+**Key Findings:** Mobile UX IN PROGRESS (4 key screens redesigned). Accessibility 95% WCAG AA (1 amber color fix pending). 3 microinteractions locked: stress slider (95%), completion celebration (85%), streak counter (90%).
+
+**Recommendation:** Ship mobile-first on Mar 7 with 4 screens polished. Defer video onboarding + confetti to Week 2. Confidence: 8/10
+
+**Design debt:** Burnout-specific meditation tagging, personalized recommendations, dark mode (all Week 2+). A/B test plan ready for 4 high-impact copy/design variants.
+
+---
+
+### 📣 ML (MARKETING LEAD) PERSPECTIVE - JOUR 8
+
+**Key Findings:** Creator partnerships outreach sent (5 targets, expecting 2-3 confirmations by Mar 6). Reddit seeding 1 live + 4 scheduled. TikTok scripts approved, creators filming Mar 4-7, videos live Mar 8-10. Growth forecast: 300-500 Week 1 signups (organic-only).
+
+**Recommendation:** Launch with content seeding already active. Parallel execution (tech + marketing) = zero dependencies. Confidence: 7/10
+
+**Content angles locked:** "3am burnout spiral", "Why therapists booked out", "I tracked my burnout 2 weeks", "Remote work isolation", "I quit therapy & built this". Creator response timeline: 48-72h typical.
+
+---
+
+### 🔧 TL (TECH LEAD) PERSPECTIVE - JOUR 8
+
+**Key Findings:** Backend critical path 64 hours (3.5 days with 2 devs, 8+ days solo). Mar 7 REALISTIC IF team confirmed, AT RISK IF solo. Database testing + API rate limiting not yet implemented (critical blockers).
+
+**Recommendation:** Go/no-go depends on IMMEDIATE team capacity confirmation. If solo, recommend Mar 10 fallback. Confidence: 6/10 (pending team confirmation)
+
+**Production readiness:** Supabase + Auth ready design. OpenAI rate limiting pending. Database backup verification required before deploy.
+
+---
+
+### ⚔️ AREAS OF STRONG AGREEMENT (All 5 roles aligned)
+
+1. **Backend is critical path blocker** (PM, DA, DL, ML, TL unanimous)
+2. **Day-2 retention = constraint to prove PMF** (PM, DA, DL aligned)
+3. **Mobile-first is non-negotiable** (DL, ML, PM, TL aligned)
+4. **Organic growth only** (ML, DA, PM, TL aligned)
+5. **Ship Mar 7 with fallback to Mar 10 if needed** (PM, DA, TL, DL aligned)
+
+---
+
+### ⚔️ AREAS OF DISAGREEMENT & RESOLUTIONS
+
+**Debate 1: Solo Dev Risk**
+- TL: "Mar 7 risky if 1 dev. Recommend Mar 10."
+- PM: "Ship anyway. Real data > perfection."
+- **RESOLVED:** → Immediate team capacity decision TODAY (Mar 3 EOD). If solo confirmed, Mar 10 fallback automatic.
+
+**Debate 2: Onboarding Scope**
+- PM: "Video onboarding critical."
+- TL: "Text safer, faster. Video Week 2."
+- DL: "Text UX actually better for MVP."
+- **RESOLVED:** → Ship text-based onboarding Mar 7. Measure Day-2 retention. Add video Week 2 if data supports.
+
+**Debate 3: Creator Expectations**
+- ML: "All 5 creators will confirm."
+- DA: "Expect 2-3 realistically (40-60% response rate)."
+- **RESOLVED:** → Target 5, plan for 2-3. ML commits outreach by Mar 3 EOD.
+
+**Debate 4: Mobile Polish Scope**
+- DL: "Full 5-screen redesign."
+- TL: "4 screens max, scope creep risk."
+- **RESOLVED:** → 4 critical screens (dashboard, check-in, meditation player, settings) for Mar 7.
+
+---
+
+### 🏆 FINAL 3 BINDING DECISIONS (JOUR 8)
+
+#### **DECISION #1: MARCH 7 LAUNCH WITH MAR 10 CONTINGENCY** 🚀
+
+**MVP Scope (Hard Requirements):**
+- ✅ Supabase + PostgreSQL backend (real persistence)
+- ✅ Signup/Login + JWT auth
+- ✅ Meditation tracking + check-in persistence
+- ✅ Dashboard (wellness score + 7-day history)
+- ✅ Text-based onboarding (5-step guided flow)
+- ✅ GA4 instrumentation (5 events)
+- ✅ Mobile-friendly (4 key screens)
+- ❌ Onboarding video
+- ❌ Microinteractions/confetti
+- ❌ Therapist network
+- ❌ Advanced personalization
+
+**Critical Path (64 hours):**
+- Mar 3: Supabase + schema (4h)
+- Mar 3-4: Auth (16h)
+- Mar 4-5: Persistence + API (24h)
+- Mar 5: GA4 (8h)
+- Mar 6: Testing + deploy (12h)
+
+**Timeline:**
+- **IF 2+ devs:** Mar 7 realistic
+- **IF 1 dev:** Mar 10 recommended
+- **DECISION REQUIRED TODAY (Mar 3 17:00 UTC)**
+
+**Go/No-Go Criteria (Mar 7 10:00 UTC):**
+- ✅ Supabase + Auth working
+- ✅ OpenAI + rate limiting live
+- ✅ GA4 tracking active
+- ✅ Database backup verified
+- ✅ E2E test: signup→meditation→check-in→data visible
+- ❌ **DO NOT SHIP** without rate limiting or backup verification
+
+**Confidence:** 8/10
+
+---
+
+#### **DECISION #2: TEXT-BASED GUIDED ONBOARDING (NOT VIDEO)** 📋
+
+**5-Step Flow:**
+1. Welcome + stress slider
+2. AI analyzes burnout level
+3. "Based on your level, try this" meditation recommendation
+4. 5-min meditation player
+5. "Come back tomorrow to build your streak"
+
+**Why text wins:**
+- Speed: 1 day vs 2-3 days for video
+- Data-driven: Ship, measure Day-2 retention, iterate
+- Mobile-native: Flows better on phones
+- Easy to tweak based on feedback
+
+**Design:** Clear copy (12-word max sentences), teal + amber CTAs, mobile bottom sheets, WCAG AA accessible
+
+**Expected impact:** Day-2 retention >50% (vs baseline 28%), meditation completion >70%
+
+**Video (Week 2):** Only if text shows <50% Day-2 retention. Not critical for PMF.
+
+**Confidence:** 9/10
+
+---
+
+#### **DECISION #3: 500+ ORGANIC SIGNUPS WEEK 1 (PARALLEL GTM)** 📱
+
+**Growth Channels:**
+
+| Channel | Target | Approach |
+|---------|--------|----------|
+| TikTok/Reels (Creator) | 200-300 | 5 creators, 5 videos Mar 8-10 |
+| Reddit Seeding | 50-100 | 5 threads, 1 live Tue, 4 Wed-Fri |
+| Organic TikTok | 100-150 | Hashtag #BurnoutRecovery (120M views) |
+| Influencer referral | 50+ | Creator audiences + communities |
+| **TOTAL** | **500-800** | |
+
+**Creator partnerships:**
+- Target 5, expect 2-3 confirmations (40-60% response rate)
+- Outreach Mar 3 (Twitter DM + Email)
+- Filming Mar 4-7, videos live Mar 8-10
+- 5 scripts approved (viral hooks ready)
+- Incentive: Early access + revenue share TBD
+
+**Reddit seeding (high-confidence):**
+- Thread #1 live Tue
+- Threads #2-5 scheduled Wed-Fri
+- OP replies 24h engagement rule
+- Expected: 75+ upvotes, 200+ comments, 10-20 clicks per thread
+
+**TikTok organic:**
+- Expected reach: 165K-500K impressions Week 1
+- CTR to landing: 2-5% = 3.3K-25K visits
+- Conversion: 5% (high-intent) = 165-1,250 signups
+
+**Contingencies:**
+- If creators <2 confirm: Fall back to 300-400 forecast
+- If Reddit threads flagged: Shift to Twitter/X organic
+- If video production delayed: Push to Mar 11
+
+**Post-launch (Week 2+):** Double down on top creators, launch user testimonial videos, referral program.
+
+**Confidence:** 7/10
+
+---
+
+### 📋 EXECUTION CHECKLIST (TODAY)
+
+**Mar 3 (TODAY - DECISION POINT):**
+- [ ] **URGENT:** Team capacity confirmation (1 dev vs 2+)
+- [ ] Review JOUR 8 with PM + TL + DL (30-min sync)
+- [ ] Approve 3 final decisions
+- [ ] TL starts Supabase immediately
+- [ ] ML sends creator outreach by 17:00 UTC
+- [ ] DL finalizes 4 mobile screen specs
+
+**Mar 3-7:** (See checklist above in full report)
+
+**Mar 6 Go/No-Go:** TL presents backend readiness; PM makes final decision
+
+**Mar 7 Launch:** Deploy 08:00 UTC, real-time monitoring active
+
+---
+
+### 🎯 POST-LAUNCH ROADMAP
+
+**Week 2:** Data-driven iteration (Day-2 retention analysis, creator performance, feature engagement)
+
+**Week 3:** Feature expansion (video onboarding if data supports, share results, meditation library expand)
+
+**April+:** Public launch (if metrics hit), therapist network, advanced personalization
+
+---
+
+### 📊 TEAM CONFIDENCE (JOUR 8)
+
+| Role | Confidence | Risk |
+|------|-----------|------|
+| **PM** | 8/10 | Backend completion blocker |
+| **DA** | 8/10 | Creator response rate TBD |
+| **DL** | 8/10 | Mobile scope feasible |
+| **ML** | 7/10 | Organic growth forecast realistic |
+| **TL** | 6/10 | Team capacity decision pending |
+
+**Overall:** 7.5/10 ✅ Ready to execute
+
+---
+
+_**JOUR 8 COMPLETE** — Mar 3 2026 06:40-07:20 UTC_
+_**Next:** Immediate team capacity decision → Mar 5 checkpoint → Mar 7 launch_
+_**Status:** ✅ Ready for execution with clear contingencies_
+
